@@ -185,11 +185,10 @@ function mouseDragged() {
 
 //Zoom function
 function mouseWheel(event) {
-  console.log(windowWidth);
   var e = event.deltaY;
 
   //Zoom in
-  if (e == -100) {
+  if (e < 0) {
     if (scale < maxScale) {
       scale++;
       imgW = (int)(imgOGW / (1 + (zoomFactor * abs(scale))));
@@ -205,7 +204,7 @@ function mouseWheel(event) {
   }
 
   //Zoom out
-  if (e == 100) {
+  if (e > 0) {
     if (scale > minScale && !(windowWidth > 1840 && scale == -3)) {
       scale--;
       imgH = (int)(imgOGH / (1 + (zoomFactor * abs(scale))));
