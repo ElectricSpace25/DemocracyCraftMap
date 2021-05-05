@@ -12,6 +12,8 @@ var imgOGH;
 var centerX;
 var centerY;
 
+var selectedIcon;
+
 //Define the zoom vars
 var scale = 0;
 var minScale = -4;
@@ -32,15 +34,26 @@ function preload() {
   map = loadImage("imgs/Map.png");
 
   //Markers
-  markers.push(new Marker("Capitol", -3120, -965, loadImage("imgs/Capitol.png")));
-  markers.push(new Marker("Hospital", -1514, -94, loadImage("imgs/Hospital.png")));
-  markers.push(new Marker("Spawn", -2202, -954, loadImage("imgs/Spawn.png")));
-  markers.push(new Marker("Museum", -1119, -81, loadImage("imgs/Museum.png")));
-  markers.push(new Marker("Airport", -839, 1170, loadImage("imgs/Airport.png")));
-  markers.push(new Marker("Walgreens", -3214, -1374, loadImage("imgs/Shop.png")));
-  markers.push(new Marker("Brilliant Apartments", -2972, -2250, loadImage("imgs/Apartment.png")));
-  markers.push(new Marker("ChipCorp", -2681, -2236, loadImage("imgs/Building.png")));
+  markers.push(new Marker("Capitol", -3120, -965, loadImage("imgs/Capitol.png"), 50));
+  markers.push(new Marker("Hospital", -1514, -94, loadImage("imgs/Hospital.png"), 50));
+  markers.push(new Marker("Spawn", -2202, -954, loadImage("imgs/Spawn.png"), 50));
+  markers.push(new Marker("Museum", -1119, -81, loadImage("imgs/Museum.png"), 50));
+  markers.push(new Marker("Airport", -839, 1170, loadImage("imgs/Airport.png"), 50));
+  markers.push(new Marker("Police Station", -2322, -432, loadImage("imgs/Police.png"), 50));
+  markers.push(new Marker("Courthouse", -2150, -34, loadImage("imgs/Court.png"), 50));
 
+  markers.push(new Marker("Brilliant Apartments", -2972, -2250, loadImage("imgs/Apartment.png"), 25));
+  markers.push(new Marker("Paradise Escapes", -3367, -1568, loadImage("imgs/Apartment.png"), 25));
+
+  markers.push(new Marker("ChipCorp", -2681, -2236, loadImage("imgs/Building.png"), 25));
+
+  markers.push(new Marker("Walgreens", -3214, -1380, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("Necessary Needs", -3086, -1380, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("Friendly Fire", -3305, -1357, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("Suuse General Store", -3366, -1357, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("Mall of DC", -3019, -1867, loadImage("imgs/Shop.png"), 35));
+  markers.push(new Marker("Lemonies Garden Shop", -3303, -1564, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("", -3363, -1507, loadImage("imgs/Shop.png"), 25));
 }
 
 function setup() {
@@ -67,11 +80,12 @@ function windowResized() {
 
 class Marker {
 
-  constructor(name, x, y, icon) {
+  constructor(name, x, y, icon, size) {
     this.name = name;
     this.x = x;
     this.y = y;
     this.icon = icon;
+    this.size = size;
   }
 
   display() {
@@ -80,29 +94,22 @@ class Marker {
     var zoomModifier = (1 + (zoomFactor * abs(scale)));
 
     //Hovering
-    if (p5.Vector.dist(new p5.Vector(this.x, this.y), new p5.Vector((mouseX - centerX) * zoomModifier, (mouseY - centerY) * zoomModifier)) < 55) {
 
-      //Text and outline
-      textSize(20);
-      textAlign(CENTER);
-      fill(0);
-      text(this.name, (this.x / zoomModifier) + 1, ((this.y / zoomModifier) + 40) - 1);
-      text(this.name, (this.x / zoomModifier) - 1, ((this.y / zoomModifier) + 40) + 1);
-      fill(255);
-      text(this.name, this.x / zoomModifier, (this.y / zoomModifier) + 40);
+    //Shadow
+    tint(0, 100);
+    image(this.icon, (this.x / zoomModifier) - 3, (this.y / zoomModifier) + 3, this.size, this.size);
 
-      //Icon and shadow
-      tint(0, 100);
-      image(this.icon, (this.x / zoomModifier) - 3, (this.y / zoomModifier) + 3, 50, 50);
+    if (p5.Vector.dist(new p5.Vector(this.x, this.y), new p5.Vector((mouseX - centerX) * zoomModifier, (mouseY - centerY) * zoomModifier)) < this.size + 10) {
+      selectedIcon = this;
+      
+      //Icon
       tint(200);
-      image(this.icon, this.x / zoomModifier, this.y / zoomModifier, 50, 50);
-    } else {
+      image(this.icon, this.x / zoomModifier, this.y / zoomModifier, this.size, this.size);
 
-      //Icon and shadow
-      tint(0, 100);
-      image(this.icon, (this.x / zoomModifier) - 3, (this.y / zoomModifier) + 3, 50, 50);
+    } else {
+      //Icon
       tint(255);
-      image(this.icon, this.x / zoomModifier, this.y / zoomModifier, 50, 50);
+      image(this.icon, this.x / zoomModifier, this.y / zoomModifier, this.size, this.size);
     }
     tint(255);
     pop();
@@ -111,6 +118,7 @@ class Marker {
 }
 
 function draw() {
+  var zoomModifier = (1 + (zoomFactor * abs(scale)));
 
   background(0);
   imageMode(CENTER);
@@ -123,8 +131,25 @@ function draw() {
   push();
   translate(centerX, centerY);
   fill(0, 255, 255);
-  circle(tempX / (1 + (zoomFactor * abs(scale))), tempY / (1 + (zoomFactor * abs(scale))), 10);
+  circle(tempX / zoomModifier, tempY / zoomModifier, 10);
+
+  if (selectedIcon != null) {
+    //Text and outline
+    textSize(20);
+    textAlign(CENTER);
+    fill(0);
+    text(selectedIcon.name, (selectedIcon.x / zoomModifier) + 1, ((selectedIcon.y / zoomModifier) + 40) - 1);
+    text(selectedIcon.name, (selectedIcon.x / zoomModifier) - 1, ((selectedIcon.y / zoomModifier) + 40) + 1);
+    fill(255);
+    text(selectedIcon.name, selectedIcon.x / zoomModifier, (selectedIcon.y / zoomModifier) + 40);
+  }
+  selectedIcon = null;
+
   pop();
+
+
+
+
 }
 
 //Pan function
