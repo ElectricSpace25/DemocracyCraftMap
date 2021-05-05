@@ -34,6 +34,8 @@ function preload() {
   map = loadImage("imgs/Map.png");
 
   //Markers
+
+  //Key
   markers.push(new Marker("Capitol", -3120, -965, loadImage("imgs/Capitol.png"), 50));
   markers.push(new Marker("Hospital", -1514, -94, loadImage("imgs/Hospital.png"), 50));
   markers.push(new Marker("Spawn", -2202, -954, loadImage("imgs/Spawn.png"), 50));
@@ -41,12 +43,35 @@ function preload() {
   markers.push(new Marker("Airport", -839, 1170, loadImage("imgs/Airport.png"), 50));
   markers.push(new Marker("Police Station", -2322, -432, loadImage("imgs/Police.png"), 50));
   markers.push(new Marker("Courthouse", -2150, -34, loadImage("imgs/Court.png"), 50));
+  markers.push(new Marker("Tutorial Building", -1900, -1507, loadImage("imgs/Tutorial.png"), 50));
+  markers.push(new Marker("Animal Shelter", -3076, -2877, loadImage("imgs/Animal Shelter.png"), 50));
+  markers.push(new Marker("Police Station\n(South Branch)", -2202, 2026, loadImage("imgs/Police.png"), 25));
 
+  //Train stations
+  markers.push(new Marker("Central Park Station", -1946, -954, loadImage("imgs/Train.png"), 50));
+  markers.push(new Marker("Train Station", -2702, 1862, loadImage("imgs/Train.png"), 50));
+
+  //Buses
+  markers.push(new Marker("Central Park Bus", -2079, -1046, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Animal Shelter Bus", -2879, -2825, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Patriot Drive West Bus", -2777, -1624, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Capitol Bus", -2878, -748, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Department State Building Bus", -3444, -9, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Industrial Area Bus", -3351, 1092, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Hamilton Train Station Bus", -2841, 1621, loadImage("imgs/Bus.png"), 20));
+
+  //Apartments
   markers.push(new Marker("Brilliant Apartments", -2972, -2250, loadImage("imgs/Apartment.png"), 25));
   markers.push(new Marker("Paradise Escapes", -3367, -1568, loadImage("imgs/Apartment.png"), 25));
+  markers.push(new Marker("The Alleyway", -2175, 1809, loadImage("imgs/ShopApt.png"), 25));
+  markers.push(new Marker("", -2518, 1557, loadImage("imgs/ShopApt.png"), 25));
 
+  //Businesses/Buildings
   markers.push(new Marker("ChipCorp", -2681, -2236, loadImage("imgs/Building.png"), 25));
+  markers.push(new Marker("Honey Co.", -3041, 1412, loadImage("imgs/Building.png"), 25));
+  markers.push(new Marker("", -2780, 1175, loadImage("imgs/Building.png"), 25));
 
+  //Shops
   markers.push(new Marker("Walgreens", -3214, -1380, loadImage("imgs/Shop.png"), 25));
   markers.push(new Marker("Necessary Needs", -3086, -1380, loadImage("imgs/Shop.png"), 25));
   markers.push(new Marker("Friendly Fire", -3305, -1357, loadImage("imgs/Shop.png"), 25));
@@ -54,6 +79,25 @@ function preload() {
   markers.push(new Marker("Mall of DC", -3019, -1867, loadImage("imgs/Shop.png"), 35));
   markers.push(new Marker("Lemonies Garden Shop", -3303, -1564, loadImage("imgs/Shop.png"), 25));
   markers.push(new Marker("", -3363, -1507, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("Wish\n(WIP)", -2843, 1513, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("TESCO\n(WIP)", -2539, 2074, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("", -2085, 2304, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("The Exchange", -2192, 1575, loadImage("imgs/Shop.png"), 35));
+
+  
+  //Factories
+  markers.push(new Marker("Mercedes", -3265, 1313, loadImage("imgs/Factory.png"), 25));
+
+  //Other
+  markers.push(new Marker("Auditorium 4", -2677, 1182, loadImage("imgs/Auditorium.png"), 25));
+  markers.push(new Marker("Golden Globe Casino\n(closed)", -2516, 1380, loadImage("imgs/Casino.png"), 25));
+  markers.push(new Marker("Democratic Reformist Party Building", -2211, 2262, loadImage("imgs/Building.png"), 25));
+
+  //Unknown
+  markers.push(new Marker("", -2028, 1803, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -1991, 1698, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -2605, 1633, loadImage("imgs/Marker.png"), 25));
+  
 }
 
 function setup() {
@@ -101,7 +145,7 @@ class Marker {
 
     if (p5.Vector.dist(new p5.Vector(this.x, this.y), new p5.Vector((mouseX - centerX) * zoomModifier, (mouseY - centerY) * zoomModifier)) < this.size + 10) {
       selectedIcon = this;
-      
+
       //Icon
       tint(200);
       image(this.icon, this.x / zoomModifier, this.y / zoomModifier, this.size, this.size);
@@ -135,8 +179,8 @@ function draw() {
 
   if (selectedIcon != null) {
     //Text and outline
-    textSize(20);
     textAlign(CENTER);
+    textSize(20);
     fill(0);
     text(selectedIcon.name, (selectedIcon.x / zoomModifier) + 1, ((selectedIcon.y / zoomModifier) + 40) - 1);
     text(selectedIcon.name, (selectedIcon.x / zoomModifier) - 1, ((selectedIcon.y / zoomModifier) + 40) + 1);
@@ -147,8 +191,10 @@ function draw() {
 
   pop();
 
-
-
+  textSize(20);
+  textAlign(LEFT);
+  fill(255);
+  text("Updated 5/5/2021", 20, 20,);
 
 }
 
