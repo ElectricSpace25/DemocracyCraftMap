@@ -47,6 +47,7 @@ function preload() {
   markers.push(new Marker("Animal Shelter", -3076, -2877, loadImage("imgs/Animal Shelter.png"), 50));
   markers.push(new Marker("Police Station\n(South Branch)", -2202, 2026, loadImage("imgs/Police.png"), 35));
   markers.push(new Marker("Vehicle Dealership", -1616, -395, loadImage("imgs/Dealership.png"), 35));
+  markers.push(new Marker("Gas Station", -1015, -664, loadImage("imgs/Gas.png"), 35));
 
   //Train stations
   markers.push(new Marker("Central Park Station", -1946, -954, loadImage("imgs/Train.png"), 50));
@@ -100,7 +101,17 @@ function preload() {
   markers.push(new Marker("(Vacated)", -1058, -513, loadImage("imgs/Shop.png"), 20));
   markers.push(new Marker("The Miner's Inn", -1195, -486, loadImage("imgs/Bar.png"), 25));
   markers.push(new Marker("", -1342, -418, loadImage("imgs/Shop.png"), 25));
-  markers.push(new Marker("", -1441, -492, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("West Decor", -1441, -492, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("Slate Pharmacy", -1428, -625, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("", -1275, -617, loadImage("imgs/Food.png"), 25));
+  markers.push(new Marker("Andino Liquors", -1215, -614, loadImage("imgs/Bar.png"), 25));
+  markers.push(new Marker("Convenience Store", -1017, -760, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("", -1016, -943, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("Flag Shop", -1017, -1087, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("Government Shop", -1154, -793, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("AquaChants", -1245, -867, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("Mini Mart Shop &\nFlo Flower Shop", -1298, -807, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("Hamilton City Marketplace", -1424, -794, loadImage("imgs/Shop.png"), 25));
 
   //Apartments
   markers.push(new Marker("Brilliant Apartments", -2972, -2250, loadImage("imgs/Apartment.png"), 25));
@@ -112,7 +123,11 @@ function preload() {
   markers.push(new Marker("", -3342, -2514, loadImage("imgs/Apartment.png"), 25));
   markers.push(new Marker("", -1625, -1484, loadImage("imgs/ShopApt.png"), 25));
   markers.push(new Marker("Mhad Inc.", -1619, -1021, loadImage("imgs/ShopApt.png"), 25));
-  markers.push(new Marker("", -1015, -509, loadImage("imgs/Apartment.png"), 20));
+  markers.push(new Marker("", -1015, -509, loadImage("imgs/Apartment.png"), 25));
+  markers.push(new Marker("Goldenrose", -1155, -620, loadImage("imgs/ShopApt.png"), 25));
+  markers.push(new Marker("Raymart", -1221, -764, loadImage("imgs/ShopApt.png"), 25));
+  markers.push(new Marker("Krix Corner Apartments", -1215, -669, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("", -1020, -1301, loadImage("imgs/ShopApt.png"), 25));
 
   //Houses
   markers.push(new Marker("", -1422, -2241, loadImage("imgs/House.png"), 25));
@@ -131,6 +146,7 @@ function preload() {
   markers.push(new Marker("ChipCorp", -2681, -2236, loadImage("imgs/Building.png"), 25));
   markers.push(new Marker("Honey Co.", -3041, 1412, loadImage("imgs/Building.png"), 25));
   markers.push(new Marker("", -2780, 1175, loadImage("imgs/Building.png"), 25));
+  markers.push(new Marker("", -834, -1373, loadImage("imgs/Building.png"), 25));
 
   //Factories
   markers.push(new Marker("Mercedes", -3265, 1313, loadImage("imgs/Factory.png"), 25));
@@ -173,6 +189,10 @@ function preload() {
   markers.push(new Marker("", -3028, -528, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -1689, -2526, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("(WIP)", -1277, -366, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("(WIP)", -1312, -704, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("(WIP)", -1156, -707, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -1018, -1456, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -833, -902, loadImage("imgs/Marker.png"), 25));
 
 
 }
