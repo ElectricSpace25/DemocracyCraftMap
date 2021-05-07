@@ -31,7 +31,7 @@ var xShift = 0;
 var yShift = 0;
 
 function preload() {
-  map = loadImage("imgs/Map.png");
+  map = loadImage("imgs/Map 5-6-21.png");
 
   //Markers
 
