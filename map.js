@@ -59,12 +59,19 @@ function preload() {
   markers.push(new Marker("Department State Building Bus", -3444, -9, loadImage("imgs/Bus.png"), 20));
   markers.push(new Marker("Industrial Area Bus", -3351, 1092, loadImage("imgs/Bus.png"), 20));
   markers.push(new Marker("Hamilton Train Station Bus", -2841, 1621, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Hamilton Correctional Facility Bus", -1886, 2011, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("South Hamilton Business District Bus", -2336, 663, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Esplanade Bus", -165, -535, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Central Business District Bus", -1018, -1151, loadImage("imgs/Bus.png"), 20));
 
   //Apartments
   markers.push(new Marker("Brilliant Apartments", -2972, -2250, loadImage("imgs/Apartment.png"), 25));
   markers.push(new Marker("Paradise Escapes", -3367, -1568, loadImage("imgs/Apartment.png"), 25));
   markers.push(new Marker("The Alleyway", -2175, 1809, loadImage("imgs/ShopApt.png"), 25));
   markers.push(new Marker("", -2518, 1557, loadImage("imgs/ShopApt.png"), 25));
+  markers.push(new Marker("", -2756, -2598, loadImage("imgs/ShopApt.png"), 25));
+  markers.push(new Marker("", -3340, -1416, loadImage("imgs/ShopApt.png"), 25));
+  markers.push(new Marker("", -3342, -2514, loadImage("imgs/Apartment.png"), 25));
 
   //Businesses/Buildings
   markers.push(new Marker("ChipCorp", -2681, -2236, loadImage("imgs/Building.png"), 25));
@@ -74,7 +81,7 @@ function preload() {
   //Shops
   markers.push(new Marker("Walgreens", -3214, -1380, loadImage("imgs/Shop.png"), 25));
   markers.push(new Marker("Necessary Needs", -3086, -1380, loadImage("imgs/Shop.png"), 25));
-  markers.push(new Marker("Friendly Fire", -3305, -1357, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("Friendly Fire", -3305, -1357, loadImage("imgs/Gun.png"), 25));
   markers.push(new Marker("Suuse General Store", -3366, -1357, loadImage("imgs/Shop.png"), 25));
   markers.push(new Marker("Mall of DC", -3019, -1867, loadImage("imgs/Shop.png"), 35));
   markers.push(new Marker("Lemonies Garden Shop", -3303, -1564, loadImage("imgs/Shop.png"), 25));
@@ -83,8 +90,12 @@ function preload() {
   markers.push(new Marker("TESCO\n(WIP)", -2539, 2074, loadImage("imgs/Shop.png"), 25));
   markers.push(new Marker("", -2085, 2304, loadImage("imgs/Shop.png"), 25));
   markers.push(new Marker("The Exchange", -2192, 1575, loadImage("imgs/Shop.png"), 35));
+  markers.push(new Marker("Amazon", -835, -1033, loadImage("imgs/Shop.png"), 35));
+  markers.push(new Marker("IKEA", -416, -1304, loadImage("imgs/Shop.png"), 35));
+  markers.push(new Marker("Funyolk Bar\n(WIP)", -3011, -2494, loadImage("imgs/Bar.png"), 25));
+  markers.push(new Marker("Panera Bread\n(WIP)", -3216, -2445, loadImage("imgs/Food.png"), 25));
+  markers.push(new Marker("Dark Oak Distillery", -2610, -2472, loadImage("imgs/Bar.png"), 25));
 
-  
   //Factories
   markers.push(new Marker("Mercedes", -3265, 1313, loadImage("imgs/Factory.png"), 25));
 
@@ -92,12 +103,37 @@ function preload() {
   markers.push(new Marker("Auditorium 4", -2677, 1182, loadImage("imgs/Auditorium.png"), 25));
   markers.push(new Marker("Golden Globe Casino\n(closed)", -2516, 1380, loadImage("imgs/Casino.png"), 25));
   markers.push(new Marker("Democratic Reformist Party Building", -2211, 2262, loadImage("imgs/Building.png"), 25));
+  markers.push(new Marker("Clockwork Bank", -636, -1256, loadImage("imgs/Bank.png"), 25));
+  markers.push(new Marker("Laundry", -3123, -2608, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("Park", -3335, -2438, loadImage("imgs/Park.png"), 25));
+
+  //UC
+  markers.push(new Marker("", -2981, -2608, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -3305, -1504, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -3339, -2593, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -3217, -2522, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -3215, -2595, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -3111, -2549, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -3108, -2453, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -2938, -2455, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -3015, -2440, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -2961, -1379, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -2756, -2471, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -2607, -2593, loadImage("imgs/Construction.png"), 25));
 
   //Unknown
   markers.push(new Marker("", -2028, 1803, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -1991, 1698, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -2605, 1633, loadImage("imgs/Marker.png"), 25));
-  
+  markers.push(new Marker("", -627, -1351, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -3301, -2167, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -3340, -1817, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -3235, -1824, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -3116, -2209, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -3209, -1536, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -3040, -1537, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -3028, -528, loadImage("imgs/Marker.png"), 25));
+
 }
 
 function setup() {
@@ -194,7 +230,7 @@ function draw() {
   textSize(20);
   textAlign(LEFT);
   fill(255);
-  text("Updated 5/5/2021", 20, 20,);
+  text("Map updated 5/6/2021", 10, 22,);
 
 }
 
