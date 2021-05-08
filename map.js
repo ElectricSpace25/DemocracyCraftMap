@@ -250,8 +250,8 @@ function setup() {
   centerY = height / 2;
   centerX = width / 2;
 
-  viewX = centerX;
-  viewY = centerY;
+  viewX = 0;
+  viewY = 0;
 
 }
 
@@ -306,8 +306,7 @@ function draw() {
   image(map, centerX, centerY, imgW, imgH);
 
   for (var m of markers) {
-    // if (m.x > -windowWidth / 2 && m.x < windowWidth) 
-    m.display();
+    if (m.x/zoomModifier > viewX - (width/2) && m.x/zoomModifier < viewX + (width/2) && m.y/zoomModifier > viewY - (height/2) && m.y/zoomModifier < viewY + (height/2)) m.display();
   }
 
   push();
@@ -327,6 +326,8 @@ function draw() {
   }
   selectedIcon = null;
 
+  viewX = -(centerX - (width / 2));
+  viewY = -(centerY - (height / 2));
   pop();
 
   textSize(20);
@@ -341,6 +342,10 @@ function click() {
   if (mouseButton == LEFT) {
     panFromX = mouseX;
     panFromY = mouseY;
+  }
+  else {
+    console.log("View", viewX, viewY);
+    console.log("Center", centerX, centerY);
   }
 }
 
