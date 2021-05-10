@@ -364,10 +364,6 @@ function click() {
     panFromX = mouseX;
     panFromY = mouseY;
   }
-  else {
-    console.log("View", viewX, viewY);
-    console.log("Center", centerX, centerY);
-  }
 }
 
 function doubleClick() {
