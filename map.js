@@ -18,10 +18,8 @@ var viewY;
 var selectedIcon;
 
 //Define the zoom vars
-var scale = 0;
-var minScale = -4;
-var maxScale = 0;
-var zoomFactor = 0.6;
+var scale = 1;
+var zoomFactor = 0.4;
 
 //Define the pan vars
 var panFromX;
@@ -36,7 +34,7 @@ var yShift = 0;
 function preload() {
   map = loadImage("imgs/Map 5-6-21.png");
 
- //Markers
+  //Markers
 
   //Key
   markers.push(new Marker("Capitol", -3120, -965, loadImage("imgs/Capitol.png"), 50));
@@ -130,6 +128,11 @@ function preload() {
   markers.push(new Marker("Cubex", -1928, 432, loadImage("imgs/Mall.png"), 25));
   markers.push(new Marker("Ray Market", -1820, 490, loadImage("imgs/ShopApt.png"), 25));
   markers.push(new Marker("", -1871, 873, loadImage("imgs/Mall.png"), 35));
+  markers.push(new Marker("The Home Depot", -2642, -1760, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("", -2777, -1519, loadImage("imgs/Bar.png"), 25));
+  markers.push(new Marker("The Home Depot", -2677, -1472, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("DouCo Buy and Sell &\nThe Blocky Cauldron", -2663, -1523, loadImage("imgs/ShopCasino.png"), 25));
+  markers.push(new Marker("DouCo", -2673, -1573, loadImage("imgs/Shop.png"), 25));
 
   //Apartments
   markers.push(new Marker("Brilliant Apartments", -2972, -2250, loadImage("imgs/Apartment.png"), 25));
@@ -159,6 +162,8 @@ function preload() {
   markers.push(new Marker("Raybucks", -3210, -521, loadImage("imgs/ShopApt.png"), 25));
   markers.push(new Marker("", -2756, -1940, loadImage("imgs/Apartment.png"), 25));
   markers.push(new Marker("", -2304, 749, loadImage("imgs/Apartment.png"), 25));
+  markers.push(new Marker("", -2780, -1377, loadImage("imgs/ShopApt.png"), 25));
+  markers.push(new Marker("", -2675, -1379, loadImage("imgs/ShopApt.png"), 25));
 
   //Houses
   markers.push(new Marker("", -1422, -2241, loadImage("imgs/House.png"), 25));
@@ -202,6 +207,7 @@ function preload() {
   markers.push(new Marker("Gas Station", -2333, 284, loadImage("imgs/Gas.png"), 25));
   markers.push(new Marker("Gas Station", -2488, 753, loadImage("imgs/Gas.png"), 25));
   markers.push(new Marker("Park", -2320, 955, loadImage("imgs/Park.png"), 25));
+  markers.push(new Marker("Home Depot Parking", -2765, -1752, loadImage("imgs/Parking.png"), 25));
 
   //Under Construction
   markers.push(new Marker("", -2981, -2608, loadImage("imgs/Construction.png"), 25));
@@ -248,12 +254,13 @@ function preload() {
   markers.push(new Marker("Gatsby Tower\n(WIP)", -2490, 296, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -2491, 556, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -2146, 748, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -2408, -1462, loadImage("imgs/Marker.png"), 25));
 
 }
 
 function setup() {
 
-  scale = 0;
+  scale = 1;
 
   cnv = createCanvas(windowWidth - 20, windowHeight - 20);
   cnv.mousePressed(click);
@@ -285,65 +292,63 @@ class Marker {
     this.y = y;
     this.icon = icon;
     this.size = size;
-    this.position = new p5.Vector(this.x, this.y);
   }
 
   display(mousePos) {
     push();
     translate(centerX, centerY);
-    var zoomModifier = (1 + (zoomFactor * abs(scale)));
-
-    //Hovering
 
     //Shadow
     tint(0, 100);
-    image(this.icon, (this.x / zoomModifier) - 3, (this.y / zoomModifier) + 3, this.size, this.size);
+    image(this.icon, (this.x * scale) - 3, (this.y * scale) + 3, this.size, this.size);
 
-    if (p5.Vector.dist(this.position, mousePos) < this.size + 10) {
+    this.position = new p5.Vector(this.x * scale, this.y * scale);
+
+    if (p5.Vector.dist(this.position, mousePos) < this.size / 2) {
       selectedIcon = this;
 
-      //Icon
+      // Hovering Icon
       tint(200);
-      image(this.icon, this.x / zoomModifier, this.y / zoomModifier, this.size, this.size);
+      image(this.icon, this.x * scale, this.y * scale, this.size, this.size);
 
     } else {
       //Icon
       tint(255);
-      image(this.icon, this.x / zoomModifier, this.y / zoomModifier, this.size, this.size);
+      image(this.icon, this.x * scale, this.y * scale, this.size, this.size);
     }
     tint(255);
     pop();
   }
-
 }
 
 function draw() {
-  var zoomModifier = (1 + (zoomFactor * abs(scale)));
 
-  var mousePos = new p5.Vector((mouseX - centerX) * zoomModifier, (mouseY - centerY) * zoomModifier);
+  var mousePos = new p5.Vector((mouseX - centerX), (mouseY - centerY));
 
   background(0);
   imageMode(CENTER);
   image(map, centerX, centerY, imgW, imgH);
 
   for (var m of markers) {
-    if (m.x/zoomModifier > viewX - (width/2) && m.x/zoomModifier < viewX + (width/2) && m.y/zoomModifier > viewY - (height/2) && m.y/zoomModifier < viewY + (height/2)) m.display(mousePos);
+    if (m.x * scale > viewX - (width / 2) && m.x * scale < viewX + (width / 2) && m.y * scale > viewY - (height / 2) && m.y * scale < viewY + (height / 2)) {
+      m.display(mousePos);
+    }
   }
 
   push();
   translate(centerX, centerY);
   fill(0, 255, 255);
-  circle(tempX / zoomModifier, tempY / zoomModifier, 10);
+  circle(tempX * scale, tempY * scale, 10);
 
   if (selectedIcon != null) {
     //Text and outline
     textAlign(CENTER);
     textSize(20);
     fill(0);
-    text(selectedIcon.name, (selectedIcon.x / zoomModifier) + 1, ((selectedIcon.y / zoomModifier) + 40) - 1);
-    text(selectedIcon.name, (selectedIcon.x / zoomModifier) - 1, ((selectedIcon.y / zoomModifier) + 40) + 1);
+    text(selectedIcon.name, (selectedIcon.x * scale) + 1, ((selectedIcon.y * scale) + 40) - 1);
+    text(selectedIcon.name, (selectedIcon.x * scale) - 1, ((selectedIcon.y * scale) + 40) + 1);
     fill(255);
-    text(selectedIcon.name, selectedIcon.x / zoomModifier, (selectedIcon.y / zoomModifier) + 40);
+    text(selectedIcon.name, selectedIcon.x * scale, (selectedIcon.y * scale) + 40);
   }
   selectedIcon = null;
 
@@ -368,8 +373,8 @@ function click() {
 
 function doubleClick() {
   if (mouseButton == LEFT) {
-    tempX = (mouseX - centerX) * (1 + (zoomFactor * abs(scale)));
-    tempY = (mouseY - centerY) * (1 + (zoomFactor * abs(scale)));
+    tempX = (mouseX - centerX) / scale;
+    tempY = (mouseY - centerY) / scale;
     console.log(tempX, tempY);
   }
 }
@@ -416,55 +421,12 @@ function mouseDragged() {
 
 //Zoom function
 function mouseWheel(event) {
-  var e = event.deltaY;
-
-  //Zoom in
-  if (e < 0) {
-    if (scale < maxScale) {
-      scale++;
-      imgW = (int)(imgOGW / (1 + (zoomFactor * abs(scale))));
-      imgH = (int)(imgOGH / (1 + (zoomFactor * abs(scale))));
-
-      var oldCenterX = centerX;
-      var oldCenterY = centerY;
-
-      centerX = centerX - (int)(zoomFactor * (mouseX - centerX));
-      centerY = centerY - (int)(zoomFactor * (mouseY - centerY));
-      //                System.out.println("Scale: " + scale);
-    }
-  }
-
-  //Zoom out
-  if (e > 0) {
-    if (scale > minScale && !(windowWidth > 1840 && scale == -3)) {
-      scale--;
-      imgH = (int)(imgOGH / (1 + (zoomFactor * abs(scale))));
-      imgW = (int)(imgOGW / (1 + (zoomFactor * abs(scale))));
-
-      var oldCenterX = centerX;
-      var oldCenterY = centerY;
-
-      centerX = centerX + (int)((mouseX - centerX)
-        * (zoomFactor / (zoomFactor + 1)));
-      centerY = centerY + (int)((mouseY - centerY)
-        * (zoomFactor / (zoomFactor + 1)));
-
-      if (centerX - imgW / 2 > 0) {
-        centerX = imgW / 2;
-      }
-
-      if (centerX + imgW / 2 < width) {
-        centerX = width - imgW / 2;
-      }
-
-      if (centerY - imgH / 2 > 0) {
-        centerY = imgH / 2;
-      }
-
-      if (centerY + imgH / 2 < height) {
-        centerY = height - imgH / 2;
-      }
-      //                System.out.println("Scale: " + scale);
-    }
+  var zoom = pow(1 + zoomFactor, -event.deltaY / 125);
+  if (imgW * zoom > width && imgH * zoom > height) {
+    scale *= zoom;
+    imgW *= zoom;
+    imgH *= zoom;
+    centerX = mouseX + (zoom * (centerX - mouseX));
+    centerY = mouseY + (zoom * (centerY - mouseY));
   }
 }
