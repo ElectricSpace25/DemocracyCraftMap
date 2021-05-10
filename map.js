@@ -49,6 +49,7 @@ function preload() {
   markers.push(new Marker("Police Station\n(South Branch)", -2202, 2026, loadImage("imgs/Police.png"), 35));
   markers.push(new Marker("Vehicle Dealership", -1616, -395, loadImage("imgs/Dealership.png"), 35));
   markers.push(new Marker("Gas Station", -1015, -664, loadImage("imgs/Gas.png"), 35));
+  markers.push(new Marker("University", 1429, -1028, loadImage("imgs/University.png"), 50));
 
   //Train stations
   markers.push(new Marker("Central Park Station", -1946, -954, loadImage("imgs/Train.png"), 50));
@@ -348,7 +349,7 @@ function draw() {
     fill(255);
     text(selectedIcon.name, selectedIcon.x * scale, (selectedIcon.y * scale) + 40);
   }
-  // selectedIcon = null;
+  selectedIcon = null;
 
   viewX = -(centerX - (width / 2));
   viewY = -(centerY - (height / 2));
