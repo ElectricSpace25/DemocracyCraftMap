@@ -36,7 +36,7 @@ var yShift = 0;
 function preload() {
   map = loadImage("imgs/Map 5-6-21.png");
 
-  //Markers
+ //Markers
 
   //Key
   markers.push(new Marker("Capitol", -3120, -965, loadImage("imgs/Capitol.png"), 50));
@@ -125,6 +125,11 @@ function preload() {
   markers.push(new Marker("", -1610, 800, loadImage("imgs/Mall.png"), 25));
   markers.push(new Marker("Phat Mall", -1127, 526, loadImage("imgs/Mall.png"), 35));
   markers.push(new Marker("Onyx Shop", -3344, -531, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("Starbucks", -1814, 302, loadImage("imgs/Food.png"), 25));
+  markers.push(new Marker("Ararat Cafe and Grill", -1924, 302, loadImage("imgs/Food.png"), 25));
+  markers.push(new Marker("Cubex", -1928, 432, loadImage("imgs/Mall.png"), 25));
+  markers.push(new Marker("Ray Market", -1820, 490, loadImage("imgs/ShopApt.png"), 25));
+  markers.push(new Marker("", -1871, 873, loadImage("imgs/Mall.png"), 35));
 
   //Apartments
   markers.push(new Marker("Brilliant Apartments", -2972, -2250, loadImage("imgs/Apartment.png"), 25));
@@ -153,6 +158,7 @@ function preload() {
   markers.push(new Marker("", -1615, 443, loadImage("imgs/Apartment.png"), 25));
   markers.push(new Marker("Raybucks", -3210, -521, loadImage("imgs/ShopApt.png"), 25));
   markers.push(new Marker("", -2756, -1940, loadImage("imgs/Apartment.png"), 25));
+  markers.push(new Marker("", -2304, 749, loadImage("imgs/Apartment.png"), 25));
 
   //Houses
   markers.push(new Marker("", -1422, -2241, loadImage("imgs/House.png"), 25));
@@ -175,6 +181,8 @@ function preload() {
   markers.push(new Marker("LogiCo HQ", -101, -665, loadImage("imgs/Building.png"), 25));
   markers.push(new Marker("Google", -1183, 747, loadImage("imgs/Building.png"), 25));
   markers.push(new Marker("CFN Studios", -1614, 332, loadImage("imgs/Building.png"), 25));
+  markers.push(new Marker("RGB Storage Facility", -2331, 366, loadImage("imgs/Building.png"), 25));
+  markers.push(new Marker("The Design World Tower", -2489, 402, loadImage("imgs/Building.png"), 25));
 
   //Factories
   markers.push(new Marker("Mercedes", -3265, 1313, loadImage("imgs/Factory.png"), 25));
@@ -191,6 +199,9 @@ function preload() {
   markers.push(new Marker("Gas Station", 79, -619, loadImage("imgs/Gas.png"), 25));
   markers.push(new Marker("", 79, -619, loadImage("imgs/Park.png"), 25));
   markers.push(new Marker("Parking", -1094, 1004, loadImage("imgs/Parking.png"), 25));
+  markers.push(new Marker("Gas Station", -2333, 284, loadImage("imgs/Gas.png"), 25));
+  markers.push(new Marker("Gas Station", -2488, 753, loadImage("imgs/Gas.png"), 25));
+  markers.push(new Marker("Park", -2320, 955, loadImage("imgs/Park.png"), 25));
 
   //Under Construction
   markers.push(new Marker("", -2981, -2608, loadImage("imgs/Construction.png"), 25));
@@ -206,6 +217,9 @@ function preload() {
   markers.push(new Marker("", -2756, -2471, loadImage("imgs/Construction.png"), 25));
   markers.push(new Marker("", -2607, -2593, loadImage("imgs/Construction.png"), 25));
   markers.push(new Marker("", -1291, -1366, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -1931, 555, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -2139, 321, loadImage("imgs/Construction.png"), 25));
+  markers.push(new Marker("", -2137, 543, loadImage("imgs/Construction.png"), 25));
 
   //Unknown
   markers.push(new Marker("", -2028, 1803, loadImage("imgs/Marker.png"), 25));
@@ -229,7 +243,11 @@ function preload() {
   markers.push(new Marker("ALDO", -178, -1074, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -1413, 557, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -1485, 387, loadImage("imgs/Marker.png"), 25));
-
+  markers.push(new Marker("", -2313, 585, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("(WIP)", -2333, 489, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("Gatsby Tower\n(WIP)", -2490, 296, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -2491, 556, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -2146, 748, loadImage("imgs/Marker.png"), 25));
 
 }
 
@@ -267,9 +285,10 @@ class Marker {
     this.y = y;
     this.icon = icon;
     this.size = size;
+    this.position = new p5.Vector(this.x, this.y);
   }
 
-  display() {
+  display(mousePos) {
     push();
     translate(centerX, centerY);
     var zoomModifier = (1 + (zoomFactor * abs(scale)));
@@ -280,7 +299,7 @@ class Marker {
     tint(0, 100);
     image(this.icon, (this.x / zoomModifier) - 3, (this.y / zoomModifier) + 3, this.size, this.size);
 
-    if (p5.Vector.dist(new p5.Vector(this.x, this.y), new p5.Vector((mouseX - centerX) * zoomModifier, (mouseY - centerY) * zoomModifier)) < this.size + 10) {
+    if (p5.Vector.dist(this.position, mousePos) < this.size + 10) {
       selectedIcon = this;
 
       //Icon
@@ -301,12 +320,14 @@ class Marker {
 function draw() {
   var zoomModifier = (1 + (zoomFactor * abs(scale)));
 
+  var mousePos = new p5.Vector((mouseX - centerX) * zoomModifier, (mouseY - centerY) * zoomModifier);
+
   background(0);
   imageMode(CENTER);
   image(map, centerX, centerY, imgW, imgH);
 
   for (var m of markers) {
-    if (m.x/zoomModifier > viewX - (width/2) && m.x/zoomModifier < viewX + (width/2) && m.y/zoomModifier > viewY - (height/2) && m.y/zoomModifier < viewY + (height/2)) m.display();
+    if (m.x/zoomModifier > viewX - (width/2) && m.x/zoomModifier < viewX + (width/2) && m.y/zoomModifier > viewY - (height/2) && m.y/zoomModifier < viewY + (height/2)) m.display(mousePos);
   }
 
   push();
