@@ -32,7 +32,7 @@ var xShift = 0;
 var yShift = 0;
 
 function preload() {
-  map = loadImage("imgs/Map 5-6-21.png");
+  map = loadImage("imgs/Map 5-10-21.png");
 
   //Markers
 
@@ -234,8 +234,6 @@ function preload() {
   markers.push(new Marker("", -627, -1351, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -3301, -2167, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -3340, -1817, loadImage("imgs/Marker.png"), 25));
-  markers.push(new Marker("", -3235, -1824, loadImage("imgs/Marker.png"), 25));
-  markers.push(new Marker("", -3116, -2209, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -3209, -1536, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -3040, -1537, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -3028, -528, loadImage("imgs/Marker.png"), 25));
@@ -350,7 +348,7 @@ function draw() {
     fill(255);
     text(selectedIcon.name, selectedIcon.x * scale, (selectedIcon.y * scale) + 40);
   }
-  selectedIcon = null;
+  // selectedIcon = null;
 
   viewX = -(centerX - (width / 2));
   viewY = -(centerY - (height / 2));
@@ -359,7 +357,7 @@ function draw() {
   textSize(20);
   textAlign(LEFT);
   fill(255);
-  text("Map updated 5/6/2021", 10, 22,);
+  text("Map updated 5/10/2021", 10, 22,);
 
 }
 
@@ -368,6 +366,9 @@ function click() {
   if (mouseButton == LEFT) {
     panFromX = mouseX;
     panFromY = mouseY;
+  }
+  if (selectedIcon != null) {
+    console.log(selectedIcon.x, selectedIcon.y);
   }
 }
 
