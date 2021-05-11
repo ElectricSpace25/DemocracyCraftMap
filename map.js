@@ -38,6 +38,15 @@ function preload() {
 
   //Key
   markers.push(new Marker("Capitol", -3120, -965, loadImage("imgs/Capitol.png"), 50));
+
+  markers.push(new Marker("Department of Construction and Transport", -2732, -1189, loadImage("imgs/Dept Construction.png"), 35));
+  markers.push(new Marker("Department of Health", -2540, -1189, loadImage("imgs/Dept Health.png"), 35));
+  markers.push(new Marker("Department of Environment and Recreation", -2347, -1189, loadImage("imgs/Dept Environment.png"), 35));
+  markers.push(new Marker("Department of Education and Commerce", -2732, -718, loadImage("imgs/Dept Education.png"), 35));
+  markers.push(new Marker("Department of Public Affairs", -2540, -718, loadImage("imgs/Dept Public.png"), 35));
+  markers.push(new Marker("Department of Justice", -2347, -718, loadImage("imgs/Dept Justice.png"), 35));
+
+
   markers.push(new Marker("Hospital", -1514, -94, loadImage("imgs/Hospital.png"), 50));
   markers.push(new Marker("Spawn", -2202, -954, loadImage("imgs/Spawn.png"), 50));
   markers.push(new Marker("Museum", -1119, -81, loadImage("imgs/Museum.png"), 50));
