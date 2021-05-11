@@ -212,7 +212,6 @@ function preload() {
 
   //Other
   markers.push(new Marker("Auditorium 4", -2677, 1182, loadImage("imgs/Auditorium.png"), 25));
-  markers.push(new Marker("Golden Globe Casino\n(Closed)", -2516, 1380, loadImage("imgs/Casino.png"), 25));
   markers.push(new Marker("Democratic Reformist Party Building", -2211, 2262, loadImage("imgs/Building.png"), 25));
   markers.push(new Marker("Clockwork Bank", -636, -1256, loadImage("imgs/Bank.png"), 25));
   markers.push(new Marker("Laundry", -3123, -2608, loadImage("imgs/Marker.png"), 25));
