@@ -46,7 +46,6 @@ function preload() {
   markers.push(new Marker("Department of Public Affairs", -2540, -718, loadImage("imgs/Dept Public.png"), 35));
   markers.push(new Marker("Department of Justice", -2347, -718, loadImage("imgs/Dept Justice.png"), 35));
 
-
   markers.push(new Marker("Hospital", -1514, -94, loadImage("imgs/Hospital.png"), 50));
   markers.push(new Marker("Spawn", -2202, -954, loadImage("imgs/Spawn.png"), 50));
   markers.push(new Marker("Museum", -1119, -81, loadImage("imgs/Museum.png"), 50));
@@ -75,7 +74,16 @@ function preload() {
   markers.push(new Marker("Hamilton Correctional Facility Bus", -1886, 2011, loadImage("imgs/Bus.png"), 20));
   markers.push(new Marker("South Hamilton Business District Bus", -2336, 663, loadImage("imgs/Bus.png"), 20));
   markers.push(new Marker("Esplanade Bus", -165, -535, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Museum Bus", -1196, -259, loadImage("imgs/Bus.png"), 20));
   markers.push(new Marker("Central Business District Bus", -1018, -1151, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Central Park Station Bus", -1855, -394, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Patriot Drive East Bus", -632, -1531, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Asthen Acres Station Bus", -1360, -2394, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Asthen Acres Central Bus", -326, -2272, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Asthen Acres East Bus", 586, -2684, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Harbor District North Bus", 1269, -535, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("Harbor District South Bus", 1697, 322, loadImage("imgs/Bus.png"), 20));
+  markers.push(new Marker("University Bus", 1170, -1189, loadImage("imgs/Bus.png"), 20));
 
   //Shops
   markers.push(new Marker("Walgreens", -3214, -1380, loadImage("imgs/Shop.png"), 25));
@@ -386,7 +394,7 @@ function doubleClick() {
   if (mouseButton == LEFT) {
     tempX = (mouseX - centerX) / scale;
     tempY = (mouseY - centerY) / scale;
-    console.log(tempX, tempY);
+    console.log(int(tempX), int(tempY));
   }
 }
 
