@@ -35,8 +35,20 @@ function preload() {
   map = loadImage("imgs/Map 5-10-21.png");
 
   //Markers
+  keyMarkers();
+  trainStations();
+  buses();
+  shops();
+  apartments();
+  houses();
+  buildings();
+  factories();
+  other();
+  construction();
+  unknown();
+}
 
-  //Key
+function keyMarkers() {
   markers.push(new Marker("Capitol", -3120, -965, loadImage("imgs/Capitol.png"), 50));
 
   markers.push(new Marker("Department of Construction and Transport", -2732, -1189, loadImage("imgs/Dept Construction.png"), 35));
@@ -58,12 +70,16 @@ function preload() {
   markers.push(new Marker("Vehicle Dealership", -1616, -395, loadImage("imgs/Dealership.png"), 35));
   markers.push(new Marker("Gas Station", -1015, -664, loadImage("imgs/Gas.png"), 35));
   markers.push(new Marker("University", 1429, -1028, loadImage("imgs/University.png"), 50));
+}
 
-  //Train stations
+function trainStations() {
   markers.push(new Marker("Central Park Station", -1946, -954, loadImage("imgs/Train.png"), 50));
   markers.push(new Marker("Train Station", -2702, 1862, loadImage("imgs/Train.png"), 50));
+  markers.push(new Marker("Asthen Acres Train Station", -1161, -2439, loadImage("imgs/Train.png"), 50));
 
-  //Buses
+}
+
+function buses() {
   markers.push(new Marker("Central Park Bus", -2079, -1046, loadImage("imgs/Bus.png"), 20));
   markers.push(new Marker("Animal Shelter Bus", -2879, -2825, loadImage("imgs/Bus.png"), 20));
   markers.push(new Marker("Patriot Drive West Bus", -2777, -1624, loadImage("imgs/Bus.png"), 20));
@@ -84,8 +100,9 @@ function preload() {
   markers.push(new Marker("Harbor District North Bus", 1269, -535, loadImage("imgs/Bus.png"), 20));
   markers.push(new Marker("Harbor District South Bus", 1697, 322, loadImage("imgs/Bus.png"), 20));
   markers.push(new Marker("University Bus", 1170, -1189, loadImage("imgs/Bus.png"), 20));
+}
 
-  //Shops
+function shops() {
   markers.push(new Marker("Walgreens", -3214, -1380, loadImage("imgs/Shop.png"), 25));
   markers.push(new Marker("Necessary Needs", -3086, -1380, loadImage("imgs/Shop.png"), 25));
   markers.push(new Marker("Friendly Fire", -3305, -1357, loadImage("imgs/Gun.png"), 25));
@@ -106,7 +123,7 @@ function preload() {
   markers.push(new Marker("", -1300, -1030, loadImage("imgs/Mall.png"), 35));
   markers.push(new Marker("Krix Mart", -1623, -808, loadImage("imgs/Shop.png"), 25));
   markers.push(new Marker("", -1619, -713, loadImage("imgs/Bar.png"), 25));
-  markers.push(new Marker("Art Museum\n(WIP)", -1614, -589, loadImage("imgs/Museum.png"), 25));
+  markers.push(new Marker("", -1614, -589, loadImage("imgs/Shop.png"), 25));
   markers.push(new Marker("Lousy Inc.", -1623, -522, loadImage("imgs/Shop.png"), 25));
   markers.push(new Marker("", -1440, -341, loadImage("imgs/ShopCasino.png"), 25));
   markers.push(new Marker("(WIP)", -1387, -374, loadImage("imgs/Shop.png"), 25));
@@ -151,8 +168,16 @@ function preload() {
   markers.push(new Marker("The Home Depot", -2677, -1472, loadImage("imgs/Shop.png"), 25));
   markers.push(new Marker("DouCo Buy and Sell &\nThe Blocky Cauldron", -2663, -1523, loadImage("imgs/ShopCasino.png"), 25));
   markers.push(new Marker("DouCo", -2673, -1573, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("Taco Truck", -664, -2406, loadImage("imgs/Food.png"), 25));
+  markers.push(new Marker("Patriot Potatoes", -2802, -2032, loadImage("imgs/Food.png"), 25));
+  markers.push(new Marker("", -2802, -2081, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("", -2749, -2081, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("", -2621, -2066, loadImage("imgs/Shop.png"), 25));
+  markers.push(new Marker("", -2568, -2065, loadImage("imgs/Shop.png"), 25));
 
-  //Apartments
+}
+
+function apartments() {
   markers.push(new Marker("Brilliant Apartments", -2972, -2250, loadImage("imgs/Apartment.png"), 25));
   markers.push(new Marker("Paradise Escapes", -3367, -1568, loadImage("imgs/Apartment.png"), 25));
   markers.push(new Marker("The Alleyway", -2175, 1809, loadImage("imgs/ShopApt.png"), 25));
@@ -182,8 +207,9 @@ function preload() {
   markers.push(new Marker("", -2304, 749, loadImage("imgs/Apartment.png"), 25));
   markers.push(new Marker("", -2780, -1377, loadImage("imgs/ShopApt.png"), 25));
   markers.push(new Marker("", -2675, -1379, loadImage("imgs/ShopApt.png"), 25));
+}
 
-  //Houses
+function houses() {
   markers.push(new Marker("", -1422, -2241, loadImage("imgs/House.png"), 25));
   markers.push(new Marker("", -1422, -2114, loadImage("imgs/House.png"), 25));
   markers.push(new Marker("", -1422, -2005, loadImage("imgs/House.png"), 25));
@@ -195,8 +221,82 @@ function preload() {
   markers.push(new Marker("", -1716, -1961, loadImage("imgs/House.png"), 25));
   markers.push(new Marker("", -1724, -2105, loadImage("imgs/House.png"), 25));
   markers.push(new Marker("", -1720, -2225, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -1308, -2296, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -1193, -2296, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -1016, -1847, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -1016, -1727, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -1140, -1737, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -1265, -1747, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -1405, -1757, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -1140, -1851, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -1265, -1851, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -1405, -1851, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -840, -2127, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -840, -1982, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -840, -1851, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -840, -1719, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -715, -2127, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -715, -1981, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -715, -1858, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -715, -1719, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -550, -1960, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -550, -1839, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -550, -1704, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -415, -1960, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -415, -1839, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -415, -1704, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -824, -2296, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -674, -2296, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -549, -2296, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -415, -2296, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -415, -2210, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -415, -2115, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -554, -2165, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -215, -1960, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -215, -1839, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -215, -1704, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -85, -1960, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -85, -1839, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -85, -1704, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 96, -1840, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 231, -1840, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 349, -1840, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 470, -1840, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 96, -1717, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 231, -1717, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 349, -1717, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 470, -1717, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -208, -2280, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -80, -2280, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 58, -2280, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 186, -2280, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 327, -2280, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 474, -2280, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 474, -2151, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 474, -2017, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 340, -2017, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 340, -2151, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 121, -2151, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 121, -2017, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -50, -2151, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", -208, -2151, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 717, -1830, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 717, -2030, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 717, -2275, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 717, -2466, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 717, -2707, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 717, -2899, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 717, -3129, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 942, -1830, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 942, -2030, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 942, -2275, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 942, -2466, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 942, -2707, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 942, -2899, loadImage("imgs/House.png"), 25));
+  markers.push(new Marker("", 942, -3129, loadImage("imgs/House.png"), 25));
+}
 
-  //Businesses/Buildings
+function buildings() {
   markers.push(new Marker("ChipCorp", -2681, -2236, loadImage("imgs/Building.png"), 25));
   markers.push(new Marker("Honey Co.", -3041, 1412, loadImage("imgs/Building.png"), 25));
   markers.push(new Marker("", -2780, 1175, loadImage("imgs/Building.png"), 25));
@@ -206,11 +306,13 @@ function preload() {
   markers.push(new Marker("CFN Studios", -1614, 332, loadImage("imgs/Building.png"), 25));
   markers.push(new Marker("RGB Storage Facility", -2331, 366, loadImage("imgs/Building.png"), 25));
   markers.push(new Marker("The Design World Tower", -2489, 402, loadImage("imgs/Building.png"), 25));
+}
 
-  //Factories
+function factories() {
   markers.push(new Marker("Mercedes", -3265, 1313, loadImage("imgs/Factory.png"), 25));
+}
 
-  //Other
+function other() {
   markers.push(new Marker("Auditorium 4", -2677, 1182, loadImage("imgs/Auditorium.png"), 25));
   markers.push(new Marker("Democratic Reformist Party Building", -2211, 2262, loadImage("imgs/Building.png"), 25));
   markers.push(new Marker("Clockwork Bank", -636, -1256, loadImage("imgs/Bank.png"), 25));
@@ -225,8 +327,11 @@ function preload() {
   markers.push(new Marker("Gas Station", -2488, 753, loadImage("imgs/Gas.png"), 25));
   markers.push(new Marker("Park", -2320, 955, loadImage("imgs/Park.png"), 25));
   markers.push(new Marker("Home Depot Parking", -2765, -1752, loadImage("imgs/Parking.png"), 25));
+  markers.push(new Marker("Park", -1097, -2081, loadImage("imgs/Park.png"), 25));
+  markers.push(new Marker("Playground", -437, -2456, loadImage("imgs/Park.png"), 25));
+}
 
-  //Under Construction
+function construction() {
   markers.push(new Marker("", -2981, -2608, loadImage("imgs/Construction.png"), 25));
   markers.push(new Marker("", -3305, -1504, loadImage("imgs/Construction.png"), 25));
   markers.push(new Marker("", -3339, -2593, loadImage("imgs/Construction.png"), 25));
@@ -243,8 +348,9 @@ function preload() {
   markers.push(new Marker("", -1931, 555, loadImage("imgs/Construction.png"), 25));
   markers.push(new Marker("", -2139, 321, loadImage("imgs/Construction.png"), 25));
   markers.push(new Marker("", -2137, 543, loadImage("imgs/Construction.png"), 25));
+}
 
-  //Unknown
+function unknown() {
   markers.push(new Marker("", -2028, 1803, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -1991, 1698, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -2605, 1633, loadImage("imgs/Marker.png"), 25));
@@ -270,6 +376,7 @@ function preload() {
   markers.push(new Marker("", -2491, 556, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -2146, 748, loadImage("imgs/Marker.png"), 25));
   markers.push(new Marker("", -2408, -1462, loadImage("imgs/Marker.png"), 25));
+  markers.push(new Marker("", -2694, -2054, loadImage("imgs/Marker.png"), 25));
 
 }
 
